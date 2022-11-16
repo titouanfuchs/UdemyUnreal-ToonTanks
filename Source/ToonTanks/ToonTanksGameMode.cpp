@@ -17,6 +17,7 @@ void AToonTanksGameMode::ActorDied(AActor* deadActor)
 		if (tankPawn->GetTankPlayerController())
 		{
 			tankPawn->GetTankPlayerController()->SetPlayerEnabledState(false);
+			GameOver(false);
 		}
 	}
 	else if (ATurretPawn* turretPawn = Cast<ATurretPawn>(deadActor))
@@ -50,4 +51,12 @@ void AToonTanksGameMode::HandleGameStart()
 		GetWorldTimerManager().SetTimer(playerEnableHandle, playerTimerDelegate, StartDelay, false);
 	}
 
+}
+
+int32 AToonTanksGameMode::GetTargetTurretsCount()
+{
+	TArray<AActor*> turrets;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATurretPawn::StaticClass(), turrets);
+
+	return turrets.Num();
 }

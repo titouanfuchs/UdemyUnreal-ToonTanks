@@ -23,6 +23,9 @@ protected:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bWonGame);
 	
 private:
 	class ATankPawn* Tank;
@@ -32,4 +35,7 @@ private:
 	float StartDelay = 5.f;
 
     void HandleGameStart();
+
+	int32 TargetTurrets = 0;
+	int32 GetTargetTurretsCount();
 };
