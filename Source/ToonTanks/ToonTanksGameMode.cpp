@@ -23,6 +23,12 @@ void AToonTanksGameMode::ActorDied(AActor* deadActor)
 	else if (ATurretPawn* turretPawn = Cast<ATurretPawn>(deadActor))
 	{
 		turretPawn->HandleDestruction();
+		TargetTurrets--;
+
+		if (TargetTurrets <= 0)
+		{
+			GameOver(true);
+		}
 	}
 }
 
