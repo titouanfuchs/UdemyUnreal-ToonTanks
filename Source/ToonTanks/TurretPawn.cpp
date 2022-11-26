@@ -15,11 +15,11 @@
 void ATurretPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+ 	
 	if (Tank) {
 		float distance = FVector::Distance(GetActorLocation(), Tank->GetActorLocation());
 
-		CanFire = distance <= Range;
+		CanFire = distance <= Range && Tank->GetIsPlayerAlive();
 
 		if (CanFire) {
 			RotateTurret(Tank->GetActorLocation());

@@ -37,5 +37,5 @@ private:
     void HandleGameStart();
 
 	int32 TargetTurrets = 0;
-	int32 GetTargetTurretsCount();
+	int32 GetTargetTurretsCount() const;
 };

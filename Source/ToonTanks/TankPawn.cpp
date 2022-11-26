@@ -30,6 +30,7 @@ void ATankPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATankPawn::HandleDestruction()
 {
 	Super::HandleDestruction();
+	IsPlayerAlive = false;
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
 }

@@ -42,11 +42,15 @@ private:
 
 	AToonTanksPlayerController* TankPlayerController;
 
+	bool IsPlayerAlive = true;
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	AToonTanksPlayerController* GetTankPlayerController() const { return TankPlayerController; }
+
+	bool GetIsPlayerAlive() const { return IsPlayerAlive; }
 };
 
 

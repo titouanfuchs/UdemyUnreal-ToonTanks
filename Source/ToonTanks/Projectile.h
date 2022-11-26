@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
+class USoundBase;
+
 UCLASS()
 class TOONTANKS_API AProjectile : public AActor
 {
@@ -29,14 +31,26 @@ private:
 		UStaticMeshComponent* ProjectileMeshComponent;
 
 	UPROPERTY(VisibleAnywhere)
-	class UProjectileMovementComponent* ProjectileMovementComp;
+		class UProjectileMovementComponent* ProjectileMovementComp;
+
+	UPROPERTY(EditAnywhere)
+		class UParticleSystemComponent* ParticleTrail;
 
 	UFUNCTION()
-	void OnHit(UPrimitiveComponent* hitComp, AActor* otherActor, UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult& hit);
+		void OnHit(UPrimitiveComponent* hitComp, AActor* otherActor, UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult& hit);
 
 	UPROPERTY(EditAnywhere)
-	float Damage = 50.f;
+		float Damage = 50.f;
 
 	UPROPERTY(EditAnywhere)
-	class UParticleSystem* 
+		class UParticleSystem* HitParticles;
+
+	UPROPERTY(EditAnywhere, Category="Sounds")
+		USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Sounds")
+		USoundBase* HitSound;
+
+	UPROPERTY(EditAnywhere, Category="Effects")
+		TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
 };

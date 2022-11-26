@@ -57,9 +57,10 @@ void AToonTanksGameMode::HandleGameStart()
 		GetWorldTimerManager().SetTimer(playerEnableHandle, playerTimerDelegate, StartDelay, false);
 	}
 
+	TargetTurrets = GetTargetTurretsCount();
 }
 
-int32 AToonTanksGameMode::GetTargetTurretsCount()
+int32 AToonTanksGameMode::GetTargetTurretsCount() const
 {
 	TArray<AActor*> turrets;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATurretPawn::StaticClass(), turrets);
